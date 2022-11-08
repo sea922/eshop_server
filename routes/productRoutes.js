@@ -1,9 +1,23 @@
-var express = require('express');
-var router = express.Router();
+import express from "express";
+const router = express.Router();
+import {
+  getProducts,
+  getProductById,
+  deleteProduct,
+  createProduct,
+  updateProduct,
+  createProductReview,
+  getTopProducts,
+} from "../controllers/productController.js";
+import { protect, admin } from "../middleware/authMiddleware.js";
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.route("/").get(getProducts).post(protect, admin, createProduct);
+router.route("/:id/reviews").post(protect, createProductReview);
+router.get("/top", getTopProducts);
+router
+  .route("/:id")
+  .get(getProductById)
+  .delete(protect, admin, deleteProduct)
+  .put(protect, admin, updateProduct);
 
-module.exports = router;
+export default router;

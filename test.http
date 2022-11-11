@@ -1,0 +1,35 @@
+GET http://localhost:8000/api/products HTTP/1.1
+ 
+###
+POST http://localhost:8000/api/users HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Pomannn",
+  "email": "admin@gmail.com",
+  "password": "123456789"
+}
+###
+POST http://localhost:8000/api/users/login HTTP/1.1
+content-type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "123456"
+}
+
+###
+GET http://localhost:8000/api/users/profile HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNTIzNjA1MDMzYzVkMWU0NDU2YTc1YSIsImlhdCI6MTY2Nzk2NTUxMCwiZXhwIjoxNjcwNTU3NTEwfQ.rd7nXJ1WT-kLCYczlGLMEX4uKEuSjNPYNYxIxOXFXN8
+
+###
+PUT http://localhost:8000/api/users/profile HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNTIzNjA1MDMzYzVkMWU0NDU2YTc1YSIsImlhdCI6MTY2Nzk2NTUxMCwiZXhwIjoxNjcwNTU3NTEwfQ.rd7nXJ1WT-kLCYczlGLMEX4uKEuSjNPYNYxIxOXFXN8
+
+{
+  "name": "Admin SYS",
+  "email": "admin@gmail.com",
+  "password": "123456"
+}
